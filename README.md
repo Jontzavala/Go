@@ -21,3 +21,49 @@
     - Used for cloud and network services
     - Used for command-line interfaces
     - Used for Cloud infrastructure (Docker, Kubernetes, Terraform)
+## Programming with Go
+- Language Characteristics and Evolution
+    - Starts with C programming language
+    - Modern C (Faster computers, Multiple CPUs, Network aware)
+- Demo: Hello, World
+    - See hello_world.go file for code.
+    - Everything in go is contained within packages
+    - Create Entry point (func main() {})
+    - Package fmt to print strings
+    - "go run (name of file)" to run and see result
+- Demo: A Simple Web Service
+    - Writers are interfaces that can be written to.
+- Demo: CLI Application
+    - flag package strongly type command line paramaters as flags
+    - "*" is a pointer
+## Leveraging the Go Ecosystem
+- Development Tools
+    - VScode, Goland, Vim, Emacs, Eclipse
+    - Gopls unifies the tools
+- Common Frameworks
+    - Go Kit (Comprehensive microservice framework)
+    - Gin (Fast, lightweight web framework)
+    - Gorilla Toolkit (Collection of useful tools without framework lock-in)
+    - Cobra (Framework for building command-line interface applications)
+    - Standard library (Zero dependency APIs for managing simple CLIs)
+    - Docker (Containerize applications to simplify deployment)
+    - Kubernetes (System that builds, deploys and scales containerized apps)
+    - Terraform (Cloud infrastructure management platform)
+- Overview of Go's website
+    - go.dev
+    - Docs
+    - Effective Go (Describes how Go code is written)
+    - Playground
+    - Packages
+    - /std (takes you to standard library)
+- Learning Resources
+    - Pluralsight
+    - The Go Blog
+    - github.com/golang/go/wiki
+    - go.dev/learn
+- Online Community
+    - Gophers Slack Channel
+    - Go discord channel
+    - Go reddit page
+- Conferences
+    - go wiki /conferences
