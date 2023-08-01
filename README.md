@@ -232,3 +232,37 @@
     - ```fmt.Println(s)   // [1 99 3 5 10 15]```
     - ```s = slices.Delete(s, 1, 3)   // removes indices 1, 2 from slice (golang.ord/x/exp/slices)```
     - ```fmt.Println(s)   // [1 5 10 15] ```
+- Demo: Slices
+    - see slices.go
+- Concept: Map Types
+    - value {string}
+    - key {string}
+    - Dynamically sized like a slice
+- Creating and Using Maps
+    - ```var m map[string]int    // declare a map```
+    - ```fmt.Println(m)    // map[] (nil)``` just like a slice a map starts with nil, which means its a referece type like a slice meaning it doesn't have it's own data.
+    - ```m = map[string]int{"foo": 1, "bar": 2}``` map literal
+    - ```fmt.Println(m["foo"])    // lookup value in map```
+    - ```m["bar"] = 99    // update value in map```
+    - ```delete(m, "foo")    // remove entry from map```
+    - ```m["baz"] = 418    // add value to map```
+    - ```fmt.Println(m["foo"])    // 0 - queries always return results```
+    - ```v, ok := m["foo"]    // comma okay syntax verifies presents```
+    - ```fmt.Println(v, ok)    // 0, false```
+    - Updating maps
+    - ```m := map[string]int {"foo":1, "bar":2, "baz":3}```
+    - ```m2 := m```
+    - ```m["foo"], m2["bar"] = 99, 42    // update values in map```
+    - ```fmt.Println(m)    //map[foo:99 bar:42 baz:3]```
+    - ```fmt.Println(m2)    // map[foo:99 bar:42 baz:3, data is shared```
+    - maps are copied by reference
+    - use maps.Clone to clone
+    - ```m == m2    //compile time error - maps are not comparable```
+- Demo: Maps
+    - see maps.go
+- Concept: Struct Types
+    - fixed size aggregate type but it's values can be different types
+- Creating and Using Structs
+    - <code> var s struct {
+
+    } <code> // declare an anonymous struct
