@@ -1,4 +1,4 @@
-# Learning Go Through Pluralsight
+# Go: The Big Picture
 
 ## Why Go?
 - Why Create Go
@@ -67,3 +67,44 @@
     - Go reddit page
 - Conferences
     - go wiki /conferences
+
+# Go Fundamentals
+
+## Variables and Simple Data Types
+- Simple Data Types
+    - Strings
+    - Numbers
+    - Booleans
+    - Errors
+- The String Type
+    - quoted string "Hello" (interpereted string)
+    - backtick mark `Hello` (raw string)
+    - "\n" in a quoted string makes a new line but with backtick string it's not interpereted.
+    - raw strings ingnore new lines
+- Numeric Types
+    - Integers (Int)
+    - Unsigned integers (uint) lowest it can go is zero
+    - Floating point numbers (float32, float64)
+    - Complex numbers (complex64, complex128)
+- Boolean Types
+    - true
+    - false
+    - usually used in a comparision operation
+- Error Types
+    - The error built-in interface type is the conventional interface for representing an error condition, with the nil value representing no error
+    - simple definition: An error occured
+    - interface, has the ability to tell you want the error was.
+    - Use the error function to tell you were the error is.
+- Finding Documentation for Built-in Types
+    - pkg.go.dev/std
+    - go to bultin package (It's documentation only)
+    - Shows the bultin functionality of Go
+    - Also shows the different types (just scroll down further)
+- Declaring Variables
+    - var myName string (declare variable, commonly used)
+    - var myName string = "Mike" (declare and initialize, commonly used)
+    - var myName = "Mike" (initialize with inferred type, rarley used)
+    - myName := "Mike" (short declaration syntax, most used used)
+- Type Conversions
+    - Go doesn't support implicit conversions (```var i int = 32 var f float32     f = i```  output: error)
+    - ```f = float32(i)``` (Type conversions allow explicit conversions)
