@@ -108,3 +108,58 @@
 - Type Conversions
     - Go doesn't support implicit conversions (```var i int = 32 var f float32     f = i```  output: error)
     - ```f = float32(i)``` (Type conversions allow explicit conversions)
+- Demo: Using Simple Types and Type Conversions
+    - see simple_types_and_conversions.go
+- Common Arithmetic Operators
+    - ```a, b := 10, 5``` (Go allows multiple variable to be initialized at once)
+    - ```c := a + b``` (Addition, output is: 15)
+    - ```c = a - b``` (Subtraction, output is 5. You don't have to use the walrus opperator because ```c``` was already initialized.)
+    - ```*``` for multiplication
+    - ```/``` division
+    - ```a/3``` integer division
+    - ```%``` remainder of division (Modulus operator)
+- Common Comparision Operators
+    - ```a, b := 10, 5```
+    - ```c := a == b``` the ```==``` operator means equals and in this specific case it's false.
+    - Errors don't support comparision operators
+    - ```!=``` is the not equal to operator
+    - ```<, <=, >, >=``` Less than, less than or equal too, greater than, greater than or equal too.
+- Demo: Using Arithmetic and Comparision Operators
+    - see using_arthmetic_and_comparison_operators.go
+    - Go to the go docs and go to language specifications
+    - Find arithmetic and comparision operator options
+- Constants, Constant Experssions and Iota
+    - constants cannot change its value
+    - ```const a = 42``` constant implicitly typed (treated as a literal value, can be a string, int, etc)
+    - ```const b string = "hello, world"``` explicitly typed constant
+    - ```const c = a``` one constant can be assigned to another.
+    - ```const ( d = true e = 3.14)``` You can group constants so you don't have to keep declaring constants within your code.
+    - ```const (a = "foo" b  //"foo")``` unassigned constants recieve previous value. So because b was not given a value, it took on the value of a.
+    - ```const c = 2 * 5``` constant expression
+    - ```const d = "hello, "+"world" ``` must be calculable at compile time
+    - ```const e = someFunction()``` this won't work it can't be evaluated at compile time.
+    - ```const a = iota    //0``` iota is related to position in constant group
+    - ```const (b = iota  //0    c   // 1    d = 3 * iota   //6)``` iota starts at zero on first line, constant expression copied iota increments, iota increments again
+    - If you go into another constant block iota restarts at 0
+- Demo: Constants, Constant Experssions and Iota
+    - see constants_constant_expressions_iota.go
+    - go.dev/doc/effective_go#constants to see iota examples.
+- Pointers and Values
+    - ```a := 42``` creating ```a``` variable a with the value of 42
+    - ```b := a``` creating variable of ```b``` and assiging it to the current value of ```a``` (42)
+    - ```a = 27``` changing the value of ```a``` to 27 but the value of ```b``` stays the same at 42
+    - With pointers it's different
+    - ```a := 42``` creating a variable ```a``` with the value of 42
+    - ```b := &a``` declaring variable ```b``` and having it point to ```a``` the ```&``` takes the address of ```a```. ```b``` is now a pointer
+    - ```*b   //42``` dereferencing the pointer to see what value the pointer is pointing to.
+    - ```a = 27``` changing the value of ```a```
+    - ```*b   //27``` Now ```b``` is 27 just like ```a``` this is what a pointer does, it holds memory address.
+    - ```a := "foo"``` Create a string variable
+    - ```b := &a``` address operator returns the address of the ```a``` variable
+    - all pointers are strongly typed in Go
+    - ```*b = "bar"``` dereference a pointer with asterisk, dereferencing ```b``` to change the value of ```a```
+    - ```c = new(int)``` built-in "new" function creates pointer to anonymous variable
+    - POINTERS ARE PRIMARILY USED TO SHARE MEMORY. USE COPIES WHENEVER POSSIBLE!
+    - Using copies avoids data races because it's using shared memory.
+- Demo: Creating and Using Pointers
+    - see creating_and_using_pointers.go
