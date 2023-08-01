@@ -195,3 +195,40 @@
     - Watch allows you to watch certain variables if you'd like
     - You can hover over any variable to see what its been through until it hit the debugger.
 ## Aggregate Data Types
+- Concept: Array Types
+    - An array is a fixed size collection of data element of all the same type
+- Creating and Using Arrays
+    - ```var arr [3]int  //array of 3 ints```
+    - ```fmt.Println(arr)    // [0 0 0]```
+    - ```arr = [3]int{1, 2, 3}``` array literal
+    - ```fmt.Println(arr[1])     // 2```
+    - ```arr[1] = 99``` updated the value
+    - ```fmt.Println(arr)    // [1 99, 3]``` changed the value at index 1 with the above line.
+    - ```fmt.Println(len(arr))``` returns the length of the array.
+    - ```arr := [3]string{"foo", "bar", "baz"}```
+    - ```arr2 := arr```
+    - ```fmt.Println(arr2)     // {"foo" "bar" "baz"}```
+    - ```arr[0] = quux``` changing the first value of arr
+    - ```fmt.Println(arr)      // {"quux" "bar" "baz"}```
+    - ```fmt.Println(arr2)     // {"foo" "bar" "baz"}``` arr2 is still the original arr even after the first item in arr was changed
+    - arr2 is a copy of arr
+    - ```arr == arr2   false - arrays are comparable```
+- Demo: Arrays
+    - see array.go
+- Concept: Slice Types
+    - has the ability to grow and shrink
+    - slice points to data in some array some where
+    - if the array is changed the slice will automatically update
+    - if a value is editied in the slice the underlying array will be updated
+- Creating and Using Slices
+    - ```var s []int    // slices of ints```
+    - ```fmt.Println(s)   // [] (nil)```
+    - A declared but uninitialized slice will return nil
+    - ```s = []int{1, 2, 3}```    // slice literal
+    - ```fmt.Println(s[1])   // 2```
+    - ```s[1] = 99   // update value```
+    - ```fmt.Println(s)   // [1 99 3]```
+    - ```s = append(s, 5, 10, 15)   // add elements to the slice```
+    - ```fmt.Println(s)   // [1 99 3 5 10 15]```
+    - ```s = slices.Delete(s, 1, 3)   // removes indices 1, 2 from slice (golang.ord/x/exp/slices)```
+    - ```fmt.Println(s)   // [1 5 10 15] ```
