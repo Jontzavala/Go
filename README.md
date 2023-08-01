@@ -163,3 +163,35 @@
     - Using copies avoids data races because it's using shared memory.
 - Demo: Creating and Using Pointers
     - see creating_and_using_pointers.go
+## Creating and Debugging Programs
+- CLI Tools
+    - OS package allows you to interact with the operating system
+    - stdin (keyboard)
+    - stdout (monitor)
+    - stderr (allows you to write error information out)
+    - fmt package
+    - Scan* (read information in from various sources)
+    - Print*
+    - bufio package (buffered input output, allows you to gather group of text together for more useful units)
+- Demo: Building a CLI Application
+    - see building_cli_application.go
+- Web Services
+    - Two computers that are talking to eachother
+    - The client (laptop) send a Request to the server and the server sends a response back to the client
+    - Inside the server there is a front controller pattern, and then there are back controllers pattern.
+    - The front controller recieves all the request and then determines which back controller to send it to.
+    - Then after the back controller processes the request it sends it back to the front controller where the front controller send the response back to the client.
+    - all of the functionality above is provided in one Go package. https://pkg.go.dev/net/http
+- Demo: Building a Web Service
+    - see building_web_service.go
+    - Go provides front controllers for us
+- Demo: Debugging a Program
+    - see debugging_a_program.go
+    - In VScode click on the play button with the little bug
+    - click the create a launch.json file
+    - click to the left of the number on the file you want to test, this will place your debugger on that line
+    - Hit the play button next to Run and Debug to run the debugger
+    - Call Stack allows you to walk back through your code to see how you go to the debugger
+    - Watch allows you to watch certain variables if you'd like
+    - You can hover over any variable to see what its been through until it hit the debugger.
+## Aggregate Data Types
