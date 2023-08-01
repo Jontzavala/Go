@@ -263,6 +263,4 @@
 - Concept: Struct Types
     - fixed size aggregate type but it's values can be different types
 - Creating and Using Structs
-    - <code> var s struct {
-
-    } <code> // declare an anonymous struct
+    - <code> var s struct {<br>} <code> // declare an anonymous struct
