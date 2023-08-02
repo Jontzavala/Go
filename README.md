@@ -262,6 +262,7 @@
     - see maps.go
 - Concept: Struct Types
     - fixed size aggregate type but it's values can be different types
+    - heterogenious
 - Creating and Using Structs
     - ```var s struct {name string id int}   // declare an anonymous struct```
     - ```fmt.Println(s)    // {"" 0}```
