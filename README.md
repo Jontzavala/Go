@@ -352,3 +352,59 @@
 - Demo: Looping through Collections
     - see looping_through_collections.go
     - To learn more about formatting verbs go to pkg.go.dev/fmt
+## Branching
+- If Statements
+    - ```if test {...}```
+    - ```
+        if test {...}
+        else {...}
+        ```
+    - ```
+        if test {...}
+        else if test {...}
+        ```
+    - ```
+        if test {...}
+        else if test {...}
+        else {...}
+        ```
+    - ```if initializer; test {...}```
+- Demo: If Statements
+    - see if_statements.go
+- Concept: Switch Statements
+    - ```
+        switch test expression {
+            case expression1:
+                statements
+            case expression2, expression3:
+                statements
+            default:
+                statements
+        }
+        ```
+- Switch Statements
+    - ```
+        i := 5
+        // or you can use an initializer like below
+        switch i:=999; i {
+            case 1:
+                fmt.Println("first case")
+            case 2 + 3, 2*i+3:
+                fmt.Println("second case")
+            default:
+                fmt.Println("default case")
+        }
+        ```
+- Logical Switches
+    - ```
+        switch i := 8; true { // you don't have to put true if you don't want to. True is always implied
+            case i < 5:
+                fmt.Println("i is less than 5")
+            case i < 10:
+                fmt.Println("i is less than 10")
+            default:
+                fmt.Println("i is greater than or equal to 10")
+        }
+        ```
+- Demo: Switch Statements
+    - see switch_statements.go
