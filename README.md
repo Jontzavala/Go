@@ -300,3 +300,55 @@
             statement n
         }    // looping execution
         ```
+- Basic Loops
+    - ```for {...}    //infinite loop```
+    - ```for condition {...}    // loop till condition```
+    - ```for initializer; test; post clause {...}    // counter-based loop```
+    - initializer allow us to set up the loop for whatever we need to do
+    - test which is the same as the condition in the conditional loop
+    - Infinite Loops
+    - ```
+        i := 1
+        for {
+            fmt.Println(i)
+            i += 1
+        }
+        ```
+    - Loop till Condition
+    - ```
+        i := 1
+        for i < 3 {
+            fmt.Println(i)
+            i += 1
+        }
+        fmt.Println("Done!:)
+        ```
+    - Counter-base Loop
+    - ```
+        for i:=1; i < 3; i++ {
+            fmt.Println(i)
+        }
+        fmt.Println("Done!")
+        ```
+    - The first statement go is fgoing to look at is the initalizer (i:= 1) it only going to run one time
+    - Then go is going to check the condition (i < 3) if condition is true Go enters the loop and prints out ```i```
+    - After the loop body executes the Go will move to the post clause (i++), it's typically used to increment a counter in the loop.
+    - i++ is the increment operator in this loop
+    - After incrementing the Go goes back to the condition and checks it and continues until condition is met.
+- Demo: Looping
+    - see looping.go
+- Looping through Collections
+    - ```for key, value := range collection {...}    // a collection can be an array, slice or map```
+    - ```for key := range collection {...}    // you can pull back a single value```
+    - ```for _, value := range collection {...}    // if you just want the values, "_" is the blank identifier```
+    - How does it work?
+    - ```
+        arr := [3]int{101, 102, 103}
+        for i, v := range arr {
+            fmt.Println(i, v)
+        }
+        fmt.Println("Done!")    // ["0, 101" "1, 102" "2, 103"]
+        ```
+- Demo: Looping through Collections
+    - see looping_through_collections.go
+    - To learn more about formatting verbs go to pkg.go.dev/fmt
