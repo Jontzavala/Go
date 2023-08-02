@@ -408,3 +408,72 @@
         ```
 - Demo: Switch Statements
     - see switch_statements.go
+- Concept: Deferred Functions
+    - deferred function is between the exit of the function and the return focus to caller.
+- Deferred Function
+    - ```
+        func main() {
+            fmt.Println("main 1")
+            defer fmt.Println("defer 1")
+            fmt.Println("main 2")
+            defer fmt.Println("defer 2")
+        }    // main 1 is printed, then the first defer statement is pushed until the end of the main function, then main 2 is printed,
+        then defer 2 is pushed until the end of the main function. Now that the main function is finished defer 2 prints first and then defer 1 is printed.
+        ```
+    - Deffered functions are first in, last out
+- Demo: Deferred Functions
+    - see deferred_functions.go
+- Concept Panic and Recover
+    - Panics in Go represent a condition where our program no longer able to execute in a reliable manner.
+    - The panic is indicating that excution enviornment is now unstable meaning the function is no longer able to execute because of some reason.
+    - Once the function is label unstable panic destroys that function. And return execution back to the previous function. Then function one panics as well and is destroyed.
+    - Recover
+    - ```defer recover``` allows you to react to a panic and not cause panic throughout your application. Saves the previous function before panic.
+- Panic and Recover
+    - ```
+        func main() {
+            fmt.Println("main 1")
+            func1()
+            fmt.Println("main 2")
+        }
+        func func1() {
+            fmt.Println("func1 1")
+            panic("uh-oh")
+            fmt.Println("func1 2")
+        }    // because there is no "defer recover" the application end at that panic
+        ```
+    - ```
+        func main() {
+            fmt.Println("main 1")
+            func1()
+            fmt.Println("main 2")
+        }
+        func func1() {
+            defer func() {
+                fmt.Println(recover())
+            }()
+            fmt.Println("func1 1")
+            panic("uh-oh")
+            fmt.Println("func1 2")
+        }    // because of the "defer func" after the panic happens the defer happens and send it back to the main func.
+        ```
+- Demo: Panic and Recover
+    - see panic_and_recover.go
+- Goto Statements
+    - ```
+        func myFunc() {
+            i := 10
+            if i < 15 {
+                goto myLabel
+            }
+        myLabel:
+            j := 42
+            for ; i < 15; i++ {
+                ...
+            }
+        }
+        ```
+    - Can leave a block
+    - Can jump to containing block
+    - Can't jump after variable declarations
+    - Can't jump into another block
