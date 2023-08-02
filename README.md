@@ -272,3 +272,17 @@
         id int
         }    //create custom type based on struct
         ```
+    - ```var s myStuct    // declare variable with custom type```
+    - ```fmt.Println(s)    // {"" 0}```
+    - ```
+        s = myStruct{
+            name: "Arthur",
+            id:42}    // Struct literal
+        ```
+    - ```fmt.Println(s)    // {"Arthur" 42}```
+    - ```s2 := s```
+    - ```s.name = "Tricia"```
+    - ```fmt.Println(s, s2)    // {"Tricia" 42} {"Arthur" 42}``` changing s doesn't change s2, structs are copied by value, value type
+    - ```s == s2    // false - structs are comparable```
+- Demo: Structs
+    - see structs.go
