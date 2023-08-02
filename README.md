@@ -266,7 +266,9 @@
     - ```var s struct {name string id int}   // declare an anonymous struct```
     - ```fmt.Println(s)    // {"" 0}```
     - ```s.name = "Arthur"    //assign value to field```
-    - ```type myStruct struct {
+    - ```
+        type myStruct struct {
         name string
         id int
-    }    //create custom type based on struct```
+        }    //create custom type based on struct
+        ```
