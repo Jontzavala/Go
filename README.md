@@ -477,3 +477,120 @@
     - Can jump to containing block
     - Can't jump after variable declarations
     - Can't jump into another block
+## Organizing Programs
+- Function Signatures
+    - What we actually type into our editor to describe the function and it's components
+    - ```
+        func functionName(parameters)(return values){
+        function body
+        }
+        ```
+- Function Parameters
+    - allows us to pass data into our functions, so that our functions can do some work on them.
+    - ```
+        func greet(name string){
+        fmt.Println(name)
+        }
+        ```
+    - You can also do multiple parameters
+    - ```
+        func greet(name1 string, name2 string) {    // you can also say func greet(name1, name2 string) if they're the same type
+            fmt.Println(name1)
+            fmt.Println(name2)
+        }
+        ```
+    - Variadic Parameters
+    - ```
+        func greet(names ...string) {    //the ...string changes names to a collection of strings instead of a single string
+            for _, n := range names {
+                fmt.Println(n)
+            }
+        }
+        ```
+    - variadic parameters must be the last parameter on your parameter list
+- Passing Values and Pointers as Parameters
+    - ```
+        func main() {
+            name, otherName := "Name", "Other name"
+            fmt.Println(name)
+            fmt.Println(otherName)
+            myFunc(name, &otherName)    // the "&" dereferences otherName
+            fmt.Println(name)
+            fmt.Println(otherName)
+        }
+        func myFunc(name string, otherName *string){    // the "*string" means its a pointer of a string
+            name = "New name"
+            *otherName = "Other new name"
+        }
+        ```
+    - Output of the above functions    // Name, Other name, Name, Other new name
+    - This tells us that when we pass a parameter as a value, we are copying the data into the called function. (the name variable)
+    - However when you pass a pointer you are sharing the data/memory so when you dereference a pointer (&othername) and assign another name to it (*otherName = "Other new name"), it changes everywhere.
+    - ONLY USE POINTERS TO SHARE MEMORY, OTHERWISE USE VALUES
+    - Sharing memory could cause bugs with concurrent programming
+- Returning Data from Functions
+    - Returning Single Values
+    - ```
+        func main() {
+            result := add(1, 2)
+            fmt.Println(result)
+        }
+        func add(l, r int) int {
+            return l + r
+        }
+        ```
+    - Returning Multiple Values
+    - ```
+        func main() {
+            result, ok := divide(1, 2)
+            if ok {
+                fmt.Println(result)
+            }
+        }
+        func divide(1, r int) (int, bool) {
+            if r == 0 {
+                return    // 0, false
+            }
+            result = l/r
+            ok = true
+            return   //optional: return l/r, true
+        }
+        ```
+    - naked returns are rarely used
+- Demo: Functions
+    - see functions.go
+- Concept: Package
+    - Packages provides us another higher level mechanism for organizing our Go applications or modules.
+    - A packages is a directory in a module
+    - contains at least one source file
+    - all members are visible to other package members
+- Package Members and Scoping Rules
+    - package user    // package declaration
+    - import "string"    // import statement
+    - var currentUsers []*User    // variable can be a package member
+    - const MaxUsers = 100    // constant can be a package member
+    - func GetByID(id int) (User, bool) {}    // functions can be a package member
+    - Go supports two levels of visibilty
+    - The first level is called package level visibilty which is universally shared. ex: package user
+    - The other visibility is called the public visibility the difference between the two is determined by the first letter of the package level member. ex: type User struct {}
+    - If the first letter is capitalized then it's considered part of the public API of the package.
+    - ```
+        type User struct {
+            ID int     //public field
+            Username string    // public field
+            password string    // package-level field
+        }
+        ```
+- Demo: Packages
+    - see packages.go
+    - the source file within a package share all of their members.
+- Documenting Code
+    - Documentation is for users.
+    - Go Proverbs - https://go-proverbs.github.io/
+    - Comments
+    - // this is a single line comment
+    - var i int // single line comments can be added at the end of a line
+    - /* this is a multi line comment */
+    - Place documentation before the package decleration
+    - The documentation should describe the intent of the package.
+    - The documentation before a function should be short and consice.
