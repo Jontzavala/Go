@@ -263,4 +263,12 @@
 - Concept: Struct Types
     - fixed size aggregate type but it's values can be different types
 - Creating and Using Structs
-    - <code> var s struct {<br>} <code> // declare an anonymous struct
+    - ```var s struct {name string id int}   // declare an anonymous struct```
+    - ```fmt.Println(s)    // {"" 0}```
+    - ```s.name = "Arthur"    //assign value to field```
+    - ```
+    type myStruct struct {
+        name string
+        id int
+    }    //create custom type based on struct
+    ```
