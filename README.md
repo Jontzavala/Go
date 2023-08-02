@@ -287,3 +287,15 @@
     - ```s == s2    // false - structs are comparable```
 - Demo: Structs
     - see structs.go
+## Looping
+- Concept: Looping
+    - Every loop is a for loop in Go
+    - ```
+        func main() {
+            statement 1
+            loop {
+                statement 2
+                statement 3
+            }
+            statement n
+        }``` looping execution
