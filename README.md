@@ -1,8 +1,10 @@
-[Go Fundamentals](#go-fundamentals)
+# Entry-Level Go
+This Repo will consist of three entry level courses.
+[Why Go?](#why-go) [Go Fundamentals](#go-fundamentals) and [Debugging in Go](#debugging-in-go)
 
-# Go: The Big Picture
+## Go: The Big Picture
 
-## Why Go?
+### Why Go?
 - Why Create Go
     - Created within Google
     - Go has efficient compilation, efficient execution and ease of programming
@@ -23,7 +25,7 @@
     - Used for cloud and network services
     - Used for command-line interfaces
     - Used for Cloud infrastructure (Docker, Kubernetes, Terraform)
-## Programming with Go
+### Programming with Go
 - Language Characteristics and Evolution
     - Starts with C programming language
     - Modern C (Faster computers, Multiple CPUs, Network aware)
@@ -38,7 +40,7 @@
 - Demo: CLI Application
     - flag package strongly type command line paramaters as flags
     - "*" is a pointer
-## Leveraging the Go Ecosystem
+### Leveraging the Go Ecosystem
 - Development Tools
     - VScode, Goland, Vim, Emacs, Eclipse
     - Gopls unifies the tools
@@ -70,9 +72,9 @@
 - Conferences
     - go wiki /conferences
 
-# Go Fundamentals
+## Go Fundamentals
 
-## Variables and Simple Data Types
+### Variables and Simple Data Types
 - Simple Data Types
     - Strings
     - Numbers
@@ -165,7 +167,7 @@
     - Using copies avoids data races because it's using shared memory.
 - Demo: Creating and Using Pointers
     - see creating_and_using_pointers.go
-## Creating and Debugging Programs
+### Creating and Debugging Programs
 - CLI Tools
     - OS package allows you to interact with the operating system
     - stdin (keyboard)
@@ -196,7 +198,7 @@
     - Call Stack allows you to walk back through your code to see how you go to the debugger
     - Watch allows you to watch certain variables if you'd like
     - You can hover over any variable to see what its been through until it hit the debugger.
-## Aggregate Data Types
+### Aggregate Data Types
 - Concept: Array Types
     - An array is a fixed size collection of data element of all the same type
 - Creating and Using Arrays
@@ -289,7 +291,7 @@
     - ```s == s2    // false - structs are comparable```
 - Demo: Structs
     - see structs.go
-## Looping
+### Looping
 - Concept: Looping
     - Every loop is a for loop in Go
     - ```
@@ -354,7 +356,7 @@
 - Demo: Looping through Collections
     - see looping_through_collections.go
     - To learn more about formatting verbs go to pkg.go.dev/fmt
-## Branching
+### Branching
 - If Statements
     - ```if test {...}```
     - ```
@@ -479,7 +481,7 @@
     - Can jump to containing block
     - Can't jump after variable declarations
     - Can't jump into another block
-## Organizing Programs
+### Organizing Programs
 - Function Signatures
     - What we actually type into our editor to describe the function and it's components
     - ```
@@ -596,7 +598,7 @@
     - Place documentation before the package decleration
     - The documentation should describe the intent of the package.
     - The documentation before a function should be short and consice.
-## Object Orientation and Polymorphism
+### Object Orientation and Polymorphism
 - Defining Methods
     - A method in object-oriented programming is a function associated with an invocation and a variable.
     - Functions vs Methods
@@ -720,7 +722,7 @@
     - golang.org/x/exp/constraints
     - golang.org/e/exp/slices
     - golang.org/e/exp/maps
-## Error Management
+### Error Management
 - Errors in Go
     - Errors are values.   // Go Proverbs - https://go-proverbs.github.io/
     - ```
@@ -759,7 +761,7 @@
         - rare
 - Demo: Converting Panics to Errors
     - see converting_panics_to_errors.go
-## Concurrent Programming
+### Concurrent Programming
 - Concept: Concurrency
     - Concurrency is not parallelism    // Go Proverbs - https://go-proverbs.github.io/
     - Concurrency means our program can do more than one thing at a time.
@@ -876,4 +878,14 @@
         ```
 - Demo: Looping with Channels
     - see looping_with_channels.go
+### Testing
+- Why Write Tests?
+    - 
+- What to Test?
+    - 
+- Test Support in Go
+    - 
+- Demo: Writing a Test
+    - see writing_a_test.go
+## Debugging in Go
     
