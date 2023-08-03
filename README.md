@@ -779,4 +779,99 @@
         ```
     - In Go workers are actually called goroutine
     - In Go we have a series of Go routines that communicate with eachother via channels and that is  how Go uses concurrency.
+- Concept: Goroutines
+    - A goroutine is a function executing concurrently with other goroutines in the same adress space.
+    - It is lightweight, costing little more than the allocation of stack space.
+- WaitGroups
+    - WaitGroups are simply counters that have special behavior when their value is zero.
+    - ```
+        type WaitGroup ...
+        func (wg WaitGroup) Add(delta int)    // increment counter by delta
+        func (wg WaitGroup) Done()    // decrement counter by 1
+        func (wg WaitGroup) Wait()    // wait till counter is zero
+        ```
+    - Goroutine
+    - ```
+        func main() {
+
+            var wg sync.WaitGroup
+
+            wg.Add(1)
+            go func() {
+                fmt.Println("do some async thing")
+                wg.Done()
+            }()
+
+            wg.Wait()
+        }
+        ```
+- Demo: Goroutines and WaitGroups
+    - see goroutines_waitgroups.go
+- Channels
+    - ```
+        // create a channel, its the only type in go that must be made with the make function
+        ch := make(chan string)
+        ```
+    - A channel is simply a pipeline that messages can flow through
+    - ```
+        // send a message
+        ch <- "hello!"
+        ```
+    - ```
+        // receive a message
+        msg := <- ch
+        ```
+    - Channel operations block until the complementary operation is ready
+    - ```
+        func main() {
+            var wg sync.WaitGroup
+            ch := make(chan int)
+
+            wg.Add(1)
+
+            go func() {
+                ch <- 42
+            }()
+
+            go func() {
+                fmt.Println(<-ch)
+                wg.Done()
+            }()
+
+            wg.Wait()
+        }
+        ```
+- Demo: Channels
+    - see channels.go
+- Select Statements
+    - ```
+        select {
+            case channel operation:
+                statements
+            case channel operation:
+                statements
+            default:    // optional if you want a non blocking select
+                statements
+        }
+        ```
+    - In a select statement, if more than one case can be acted upon the one case is chosen RANDOMLY.
+- Demo: Select Statements
+    - see select_statements.go
+- Looping with Channels
+    - ```
+        ch := make(chan int)
+
+        go func() {
+            for i := 0; i < 10; i++ {
+                ch <- i
+            }
+            close(ch)    // no more messages can be sent
+        }()
+        
+        for msg := range ch {
+            statements
+        }
+        ```
+- Demo: Looping with Channels
+    - see looping_with_channels.go
     
