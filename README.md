@@ -594,3 +594,127 @@
     - Place documentation before the package decleration
     - The documentation should describe the intent of the package.
     - The documentation before a function should be short and consice.
+## Object Orientation and Polymorphism
+- Defining Methods
+    - A method in object-oriented programming is a function associated with an invocation and a variable.
+    - Functions vs Methods
+    - ```
+        // function
+        var i int
+        func isEven(i int) bool {
+            return i%2==0
+        }
+
+        // method
+        type myInt int        // need a type to bind method to. DOESN'T HAVE TO BE A STRUCT
+
+        func (i myInt) isEven() bool {       //method receiver
+            return int(i)%2==0
+        }
+        ```
+    - Methods indicate a tighter coupling between a function and a type
+    - ```
+        // function
+        var i int
+        func isEven(i int) bool {
+            return i%2==0
+        }
+        ans := isEven(i)
+        
+        // method
+        type myInt int
+        var mi myInt
+        func (i myInt) isEven() bool {
+            return int(i)%2==0
+        }
+        ans = mi.isEven()
+        ```
+- Method Receivers
+    - ```
+        type user struct {
+            id int
+            username string
+        }
+
+        func (u user) String() string {    //value receiver
+            return fmt.Sprintf("%v (%v) \n", u.username, u.id                                                                    )
+        }
+
+        func (u user) UpdateName(n name) {    // pointer receiver
+            u.username = name
+        }
+        ```
+    - Use pointer receivers to share a variable between caller and method
+- Demo: Methods
+    - see Methods Folder
+- Concept: Interfaces
+    - Methods and Concrete Types
+    - os.File is a file type it has the Read method returns a slice of bytes
+    - net.TCPConn models a tcp connection, it also has a read method that returns a slice of bytes
+    - interfaces allowing you to combine the two methods since they do the same thing, so it doesn't matter where it comes from, the os.File or the net.TCPConn
+    - You would do the aboce statement by creating a Reader interface
+- Defining and Implementing Interfaces
+    - ```
+        type Reader interface {
+            Read([]byte) (int, error)
+        }
+
+        type File struct {...}
+        func (f File) Read(b []byte) (n int, err error)
+
+        type TCPConn struct {...}
+        func (t TCPConn) Read(b []byte) (n int, err error)
+
+        var f File
+        var t TCPConn
+
+        var r Reader
+        r = f
+        r.Read(...)    // read from File
+        r = t
+        r.Read(...)    // read from TCPConn
+        ```
+- Type Assertions
+    - ```
+        type Reader interface {
+            Read([]byte) (int, error)
+        }
+
+        type File struct {...}
+        func (f File) Read(b []byte) (n int, err error)
+
+        var f File
+        var r Reader = f
+
+        var f2 File = r    // error, Go can't be sure this will work
+        f2 = r.(File)    // type assertion, panics upon failure
+        f2, ok := r.(File)    // type assertion with comma okay, doesn't panic
+        ```
+    - Type Switches
+    - ```
+        var f File
+        var r Reader = f
+
+        switch v := r.(type) {
+            case File:
+                // v is now a File object
+            case TCPConn:
+                // v is now a TCPConn object
+            default:
+                // this is selected if no types were matched
+        }
+        ```
+- Demo: Interfaces
+    - see interfaces.go
+- Concept: Generic Programming
+    - A generic fuction will take in the concrete type turn it into the io.Reader within the function and when it's done with it, it's converted back to the concrete type.
+    - Transient Polymorphism
+- Demo: Creating Generic Functions
+    - see creating_generic_functions.go
+- Demo: Generics with the Comparable Constraint
+    - see generics_with_comparable_constraint.go
+- Demo: Creating Custom Type Constraints
+    - see creating_custom_type_constraints.go
+    - golang.org/x/exp/constraints
+    - golang.org/e/exp/slices
+    - golang.org/e/exp/maps

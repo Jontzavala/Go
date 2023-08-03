@@ -14,6 +14,7 @@ type menuItem struct {
 
 var in = bufio.NewReader(os.Stdin)
 
+// Must be capitalized to be able to share with packages.go
 func AddItem() {
 	fmt.Println("Please enter the name of the new item")
 	name, _ := in.ReadString('\n')
