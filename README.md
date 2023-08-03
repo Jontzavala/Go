@@ -718,3 +718,42 @@
     - golang.org/x/exp/constraints
     - golang.org/e/exp/slices
     - golang.org/e/exp/maps
+## Error Management
+- Errors in Go
+    - Errors are values.   // Go Proverbs - https://go-proverbs.github.io/
+    - ```
+        f, err := os.Open("path/to/file")
+        if err != nil {
+            //handle the error
+        }
+        defer f.Close()
+        ```
+    - consider error handling immediately
+    - simplify code review and understanding
+    - improves production stability
+- Concept: Error Handling
+    - Don't just check errors, handle them gracefully.    // Go Proverbs - https:/go-proverbs.github.io/
+- Demo: Creating Error Objects
+    - see creating_error_objects.go
+    - The error type is a built in type of Go
+    - error is an interface type
+    - look at the errors package in the standard library
+    - Errorf function takes a formatting string and a collection of parameters and returns an error
+    - %w allows us to wrap one error with another error
+- Demo: Error Handling
+    - see error_handling.go
+    - if an error is returned by a function it should always be managed in production code.
+- Concept: Errors vs. Panics
+    - Don't Panic    // Go Proverbs - https://go-proverbs.github.io/
+    - Errors
+        - result of an operation
+        - easy to discover
+        - implies that things didn't go to plan
+        - used frequently
+    - Panic
+        - alters control flow
+        - relies on docs and reading code
+        - implies the program is unstable
+        - rare
+- Demo: Converting Panics to Errors
+    - see converting_panics_to_errors.go
