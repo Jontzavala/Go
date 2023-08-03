@@ -1,3 +1,5 @@
+[Go Fundamentals](#go-fundamentals)
+
 # Go: The Big Picture
 
 ## Why Go?
