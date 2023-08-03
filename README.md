@@ -757,3 +757,26 @@
         - rare
 - Demo: Converting Panics to Errors
     - see converting_panics_to_errors.go
+## Concurrent Programming
+- Concept: Concurrency
+    - Concurrency is not parallelism    // Go Proverbs - https://go-proverbs.github.io/
+    - Concurrency means our program can do more than one thing at a time.
+- Concept: CSP (Communicating Sequential Processes)
+    - ```[Worker] --(channel)--> [Worker] --(channel)--> [Worker]```
+    - This is called Communicating Sequential Processes (CSP)    // https://en.wikipedia.org/wiki/Communcating_sequential_processes
+    - The workers can work independenly and transfer their work using the channels, so they can work concurrently.
+    - Fan in pattern is when multiple input sources are generating results (three workers passing information through a channel to one worker)
+    - ```
+        [Worker]
+        [Worker]--(channel)--> [Worker]
+        [Worker]
+        ```
+    - Fan out pattern is when you have one worker send info to three different workers passing through a channel, used to balance a load out. Few input sources many output sources.
+    - ```
+                               [worker]
+        [Worker]--(channel)--> [Worker]
+                               [Worker]
+        ```
+    - In Go workers are actually called goroutine
+    - In Go we have a series of Go routines that communicate with eachother via channels and that is  how Go uses concurrency.
+    
