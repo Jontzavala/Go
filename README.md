@@ -1,5 +1,3 @@
-### Go Fundamentals
-
 # Go: The Big Picture
 
 ## Why Go?
