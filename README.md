@@ -1,6 +1,7 @@
 # Entry-Level Go
 This Repo will consist of three entry level courses.<br/>
-[Why Go?](#why-go)<br/>
+[Go: The Big Picture](#go-the-big-picture) <br/>
+    - [Why Go?](#why-go)
 [Go Fundamentals](#go-fundamentals)<br/>
 [Debugging in Go](#debugging-in-go)<br/>
 
