@@ -895,12 +895,49 @@ This Repo will consist of three entry level courses.<br/>
     - see looping_with_channels.go
 ### Testing
 - Why Write Tests?
-    - 
+    - Initial Build
+        - Ensure correctness of application
+    - Production
+        - Identify errors before users are impacted
+    - Enhancements
+        - Prevent new development from breaking older features
+    - When you write test during implementation you get less bugs in testing and integration and way less bugs in production.
 - What to Test?
-    - 
+    - Correctness
+        - The program does what it should
+    - Performance
+        - The program doesn't consume excessive resources
+    - How to construct a testing hierarchy
+        - At the bottom should be a unit test
+            - Unit test prove that individual units of logic are correct. Example: A function
+        - next compoonent testing
+            - Component tests confirm that different application concerns (packages?) perform correctly.
+        - then integration testing
+            - Integration testing validates that the entire program works as expected.
+        - and at the top end to end testing
+            - End to end tests demonstrate that the entire system works together correctly.
 - Test Support in Go
-    - 
+    - Correctness
+        - Test
+        - Fuzz
+            - uses A.I. to generate test scenarios for us.
+        - Example
+            - tight integration with documentation
+        - https://pkg.go.dev/testing
+    - Performance
+        - overall performance, how fast the program is running.
+        - Benchmark test
+            - allows us to set up a test scenario and then confirm how much memory and time it takes to execute that scenario. Good for making sure your application responds quick enough.
+        - https://go.dev/doc/diagnostics
+    - Resource usage
+        - Why the program is consumming the memory or the cpu time or the storage space that it does.
+        - Profiling test
+            - takes the test scenario and give us the aggregate result, so how much memory was used in total, how much cpu was used in total then it will breakdown by function where the memory or cpu time was actually spent.
+        - Tracing test
+            - Does the same thing as profiling, but also includes time access. So we can actually see how the resources were used in our application over time. So like looking for bottle necks in the application.
+        - https://go.dev/doc/diagnostics
 - Demo: Writing a Test
     - see writing_a_test.go
+    - ```go test ./...    // to run test in the terminal for all test in current directory and all subdirectories.```
 ## Debugging in Go
     
