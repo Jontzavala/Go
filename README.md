@@ -940,4 +940,45 @@ This Repo will consist of three entry level courses.<br/>
     - see writing_a_test.go
     - ```go test ./...    // to run test in the terminal for all test in current directory and all subdirectories.```
 ## Debugging in Go
+### Getting Started with Go and Debugging
+- Three Popular Debugging Methods
+    - Print Statement
+        - Pros
+            - Part of fmt package
+            - Very simple to use
+        - Cons
+            - Concurrency is not suppported
+            - Can't handle complex scenarios
+    - Log Package
+        - Pros
+            - Part of log package
+            - Relatively simple to use
+            - supports concurrency
+        - Cons
+            - Can't handle complex scenarios
+    - Delve Utility
+        - Pros
+            - Command line
+            - integrates with IDE
+            - Full-featured debugging tool
+            - Supports remote-debugging
+            - Preferred over GDB
+        - Cons
+            - Lots of features can be overwhelming
+- Scenario Setup
+    - Mark
+        - It is his first job as a Developer
+        - He often gets confused with code
+    - Jen
+        - She is an experienced mentor
+        - Gives tasks with incremental difficulties to Mark so he can lean to code better
+    - Jen assigns a task to calculate available inventory item to Mark
+    - Mark has to calculate inventory accurately without mistakes
+- Debugging with Print Statement
+    - see Debugging_with_print_statement folder
+- Debugging with Log Package
+    - see Debugging_with_log_package folder
+- Debugging With Delve Utility
+    - see Debugging_with_delve folder
+    - https://github.com/go-delve/delve
     
