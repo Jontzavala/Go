@@ -981,4 +981,62 @@ This Repo will consist of three entry level courses.<br/>
 - Debugging With Delve Utility
     - see Debugging_with_delve folder
     - https://github.com/go-delve/delve
-    
+### Exploring Delve with Command Line and Editor Integration
+- Debugging with Delve
+    - Running the program
+    - Manipulating breakpoints
+    - Viewing variables and memory
+    - Viewing call stack
+    - Listing threads
+    - Jen asks Mark to extend his inventory calculation to include the total cost of all items
+    - Mark is to calculate inventory items alog with their total costs
+- Demo: Command Line Debugging with Delve
+    - ```dlv --help``` shows all the available commands for Delve
+    - ```dlv debug .``` will compile and begin debugging your current directory
+    - entering "continue" will run the code and display the ouput.
+    - ```restart``` to restart the debugging process
+    - To place a breakpoint type ```break main.go: 14```. This places a break on line 14 of main.go
+    - Type in ```breakpoints``` to view all of your breakpoints
+    - Now type ```continue``` to execute the code and hit your breakpoint
+    - Type ```step``` to step into the function where you placed your breakpoint
+    - Type ```args``` to see all the parameters of the function
+    - Type ```locals``` to see any local variable
+    - Type ```next``` to go to the next line of the function
+    - Type ```stack``` to view the stack trace
+    - Type ```threads``` to list the threads
+    - Type ```exit``` to exit debugging mode
+    - You may need to add nano editor to change the code
+    - ```stepout``` is used to step out of functions
+- Demo: Debugging with Delve in VScode
+    - see Debugging_with_delve_vscode folder
+    - You can put breakpoint on functions by selecting new breakpoint and then function breakpoint and entering the name of the function
+    - Conditional breakpoints you can place on expressions
+    - inline breakpoints can pause the program execution where you place it.
+    - logpoints allows you to place a message when hit a it in the program, it does not pause the execution
+### Remote Debugging Container - Deployed Apps with Delve
+- Scenario Setup
+    - Jen wants Mark to validate that the web server is running without any errors inside a container.
+    - Mark to run Delve remotely to debug various steps of web services
+- Demo: Remote Debugging with Delve
+    - ```.ListenAndServe``` starts the server
+    - Connecting to Docker
+    - ```
+        FROM golang:1.19.2  //base images used to build container
+
+        WORKDIR /usr/src/app
+
+        COPY go.mod go.* ./  //setting up directories and moving our files from folders to image
+        RUN go mod download && go mod verify  //VERY IMPORTANT its where we download our mod and dependencies
+        RUN go install github.com/go-delve/delve/cmd/dlv@latest  //This is to download the latest version of Delve
+        // When you build a docker file you need to have an active internet connection
+
+        COPY . .
+        RUN go build -gcflags="all=-N -l" -v -o /usr/local/bin/app ./...  //builds all the files in our folder, makes debugging user friendly
+
+        EXPOSE 2345  // exposing port of container
+        EXPOSE 5001  //exposing port of container
+
+        CMD ["dlv","debug","--listen=:2345","--headless=true","--api-version=2","--accept-multiclient"]
+        ```
+    - ```docker build --tag godebug .``` builds the docker image
+    - ```docker run --security-opt="seccomp=unconfined" --cap-add=SYS_PTRACE -p:5001:5000 -p:2345:2345 godebug ``` to run container
